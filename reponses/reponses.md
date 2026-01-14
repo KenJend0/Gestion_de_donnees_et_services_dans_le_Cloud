@@ -13,7 +13,7 @@ Résultat :
 Docker version 27.4.0, build bde2b89
 ```
 
-Tout bon, Docker est déjà là. J'ai aussi un compte DockerHub avec le username `kenjend0`.
+J'ai deja Docker. J'ai aussi un compte DockerHub avec le username `kenjend0`.
 
 ---
 
@@ -41,7 +41,7 @@ C:\Users\aissi\...\TD1\
 
 ### Ce que j'ai fait :
 
-J'ai créé le Dockerfile dans le dossier Apache-Server-Image. Au départ, j'ai essayé exactement le fichier du TP (avec Ubuntu + apt-get), mais il y avait un problème de date système avec les mirrors Ubuntu. J'ai donc adapté en utilisant l'image officielle `httpd:2.4` qui a Apache déjà préinstallé.
+J'ai créé le Dockerfile dans le dossier Apache-Server-Image. Au départ, j'ai essayé exactement le fichier du TP (avec Ubuntu + apt-get), mais il y avait un problème. J'ai donc adapté en utilisant l'image officielle `httpd:2.4` qui a Apache déjà préinstallé.
 
 Voici ce que j'ai au final :
 
@@ -75,7 +75,7 @@ REPOSITORY       TAG       IMAGE ID      CREATED         SIZE
 kenjend0/apache  latest    a0a30515afea  37 hours ago    175MB
 ```
 
-L'image est là, nickel.
+L'image est là.
 
 ---
 
@@ -96,7 +96,7 @@ Comme j'avais déjà un compte créé et sauvegardé, ça m'a tout de suite auth
 docker push kenjend0/apache
 ```
 
-Résultat (simplifié) :
+Résultat :
 ```
 Using default tag: latest
 The push refers to repository [docker.io/kenjend0/apache]
@@ -135,14 +135,7 @@ Les 3 conteneurs tournent bien.
 
 ### Test d'accès
 
-J'ai testé dans PowerShell :
-```powershell
-Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing | Select-Object -ExpandProperty StatusCode
-```
-
-Résultat : `200` (success !)
-
-Je peux aussi ouvrir directement dans le navigateur et voir la page par défaut d'Apache.
+Je ouvert directement dans le navigateur et vu la page par défaut d'Apache.
 
 ---
 
@@ -157,28 +150,6 @@ J'ai créé un dossier `mywebapp` avec un fichier `index.html` simple (juste pou
 <html>
 <head>
     <title>Ma Web App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        h1 {
-            color: #333;
-            margin: 0;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -204,12 +175,6 @@ Successfully copied 3.07kB to 03583b2ab2c8:/usr/local/apache2/htdocs/index.html
 ```
 
 ### Test d'accès
-
-```powershell
-Invoke-WebRequest -Uri "http://localhost:8080" -UseBasicParsing | Select-Object -ExpandProperty StatusCode
-```
-
-Résultat : `200`
 
 Et en ouvrant le navigateur sur http://localhost:8080, je vois ma page HTML avec le style !
 
@@ -274,11 +239,6 @@ Résultat :
 ```
 
 Test d'accès :
-```powershell
-Invoke-WebRequest -Uri "http://localhost:8083" -UseBasicParsing | Select-Object -ExpandProperty StatusCode
-```
-
-Résultat : `200`
 
 Ouverture dans le navigateur : http://localhost:8083 → La page s'affiche avec la webapp !
 
