@@ -1,0 +1,10 @@
+FROM httpd:2.4
+
+LABEL maintainer="Yehia TAHER <yehia.taher@gmail.com>"
+
+# Copier l'application web dans le conteneur
+COPY ./index.html /usr/local/apache2/htdocs/
+
+EXPOSE 80
+
+CMD ["httpd-foreground"]
